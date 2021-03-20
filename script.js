@@ -5,21 +5,28 @@ if(el) {
         sort: true,
         onEnd: function(evt) {
             // console.log(evt.item);
-            console.log(evt.oldIndex);
-            console.log(evt.newIndex);
+            // console.log(evt.oldIndex);
+            // console.log(evt.newIndex);
             
             if(evt.oldIndex > evt.newIndex) {
                 console.log('tumaas ang item');
+                for (let i = evt.newIndex; i < evt.oldIndex + 1; i++) {
+                    evt.to.children[i].firstElementChild.innerHTML = i + 1;
+                    evt.to.children[i].dataset.sort = i + 1;
+                }
+                
             } else {
                 console.log('bumaba ang item');
+                for (let i = evt.oldIndex; i < evt.newIndex + 1; i++) {
+                    evt.to.children[i].firstElementChild.innerHTML = i + 1;
+                    evt.to.children[i].dataset.sort = i + 1;
+                }
+                
             }
-            // console.log(evt);
-            // let nextSibling = evt.item.nextElementSibling;
-
-            // while(nextSibling) {
-            //     console.log(nextSibling);
-            //     nextSibling = nextSibling.nextElementSibling;
-            // }
+            
+            // Array.from(el.children, list => {
+            //     console.log(list, ' ', list.dataset.sort);
+            // });
         }
     });
 }
